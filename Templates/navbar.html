@@ -1,0 +1,24 @@
+
+
+<div id="navbar">
+    <div class="navbar" id="navbar-wel-message">
+        {% if user.is_authenticated %}
+        <span>Hi {{user.first_name}}</span><br>
+        {% endif %}
+        <span>django learning</span></div>
+    <div class="navbar">
+        <ul id="navbarlisteditems">
+            <li><a href="">React Js</a></li>
+            <li><a href="">JS Basics</a></li>
+            <li><a href="">Axios</a></li>
+            <li><a href="">Rest Framework</a></li>
+            <li><a href="">MVT</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <span class="usercheck"><a href="{% url 'logout' %}">LOGOUT</a></span>
+        {% else %}
+        <span class="usercheck"><a href="{% url 'createaccount' %}">REGISTER</a></span>
+        <span class="usercheck"><a href="{% url 'login' %}">LOGIN</a></span>
+        {% endif %}
+    </div>
+</div>

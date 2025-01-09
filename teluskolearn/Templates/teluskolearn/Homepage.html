@@ -1,0 +1,116 @@
+
+{% extends "main.html" %}
+{% load static  %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/Homepage.css'%}">
+{% endblock style %}
+{% block title %}
+<title>Homepage</title>
+{% endblock title %}
+    
+{% block content %}
+{% for message in messages %}
+<span style="color:blue;">{{message}}</span>
+{% endfor %}
+
+<span class="Toppart">
+    <h5 class="SmartTop">SMART MONEY E-COMERCE</h5> 
+    <h4 class="DateTime">{{date}}</h4></span>
+<div class="Header">
+    <nav >
+        <ul  class="NavigationBar" >
+            <li class="ListItems">  <a href="/dennis">Go to Dennis page</a></li>
+            <li class="ListItems">  <a href="">Home</a></li>
+            <li class="ListItems"> <a href="">Affiliate program</a></li>
+            <li class="ListItems"> <a href="">Help</a></li>
+            <li class="ListItems"> <a href="">Patners</a></li>
+            {% if user.is_authenticated %}
+                <li class="ListItems"> <a href="">Earnings</a></li>
+                <li class="ListItems"><a href="">My Account</a> </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+<!--body area  of the web-->
+
+
+<div class="BodyContainer">
+    <div>
+        <h6>Categories</h6>
+        <ul>
+            <li>Electronics</li>
+            <li>Home Appliances</li>
+            <li>Computers</li>
+            <li>Shampoos</li>
+            <li>Clothings</li>
+        </ul>
+    </div>
+
+    
+    <div class ="TaskContainer">
+        {% for dest in dests%}
+        <div class="ImageBox">
+            <img src="{{dest.img.url}}" alt="this is an image of task {{dest1.img}}.jpg" />
+            <span>{{dest.name}}</span>
+            <span>{{dest.desc}}</span>
+            <span>Ksh.{{dest.price}}</span>
+            <span>{{dest.sku}}</span>
+            <button>Add to Task</button>
+        </div>
+        {% endfor %}
+    </div>
+</div> 
+
+<div class="FooterDiv">
+
+    <div class="FooterDiv1">
+        <div class="AboutUs">
+            <h6>About Smart Money E-Comerce</h6>
+            <p>Smart money e-comerce was started in 2011 by three enterpreneurs: Elisha,Dennis and Amos.
+                The programme was intended to provide a parttime flexible online job expecially to students.It 
+                was licensed on 2013 by the goverment of kenya and given mandate to run the business in the country
+                (<a href="">See certificate</a>).
+            </p>
+        </div>
+        <div class="PaymentMethod">
+            <h6>Payment Options</h6>
+            <ul>
+                <li class="ListItems">Mpesa</li>
+                <li class="ListItems">Airtel Money</li>
+                <li class="ListItems">T-Cash</li>
+                <li class="ListItems">Equity Bank</li>
+                <li class="ListItems">KCB Bank</li>
+                <li class="ListItems">Diamond Trust Bank</li>
+            </ul>
+        </div>
+        <div class="Patners">
+            <h6>Our Patners</h6>
+            <ul>
+                <li class="ListItems">Safaricom</li>
+                <li class="ListItems">Mastercard</li>
+                <li class="ListItems">Baobab</li>
+                <li class="ListItems">E-Africa</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="FooterDiv2">
+        <div class="ContactPlatforms">
+            <span>Contact us on:</span><br />
+            <span class="ContactUsIcons">
+                <a  class="ContactUsIcon"href="">💌</a>
+                <a  class="ContactUsIcon" href="">📞</a>
+                <a  class="ContactUsIcon" href="">💰</a>
+                <a  class="ContactUsIcon" href="">🛒</a>
+            </span>
+        </div>
+        <h6 class="Copyright">&copy;{{year}} SMART MONEY AFFILIATE</h6>
+    </div>
+</div>
+    
+{% endblock content %}
+    
+
+

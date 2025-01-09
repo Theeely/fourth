@@ -1,0 +1,79 @@
+
+body{
+    background-color: rgb(156, 255, 255);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:fixed;
+    text-align: center;
+}
+
+.LoginContainer{
+    background-color:hsl(180, 79%, 74%);
+    display:inline-flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border-radius:10px;
+    box-shadow:10px 10px 20px rgba(83, 83, 228, 0.774);
+}
+.LoginForm{
+    background-color:hsl(180, 79%, 84%);
+    display:block;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border-radius:10px;
+}
+
+.LoginContainer h6{
+    font-size:1.4rem;
+    margin:0;
+}
+
+.LoginForm label{
+    font-size:1.4rem;
+}
+.LoginForm  input{
+    font-size:1.5rem;
+    border-radius:10px;
+    border:1px solid hsla(0, 1%, 54%, 0.849);
+}
+#submitbtn{
+    font-size:1.4rem;
+    padding:0 20px;
+    margin-top:10px;
+    border-radius:5px;
+    border:none;
+    color:white;
+    font-weight:bold;
+    font-family:times new roman, Helvetica, sans-serif;
+    background-color:hsla(240, 95%, 50%, 0.719);
+    cursor:pointer;
+}
+#submitbtn:hover{
+      background-color:hsla(240, 95%, 70%, 2.719);
+}
+#submitbtn:active{
+    background-color:hsla(240, 95%, 40%, 2.719);
+}
+#createAccountquiz{
+    font-size:1.4rem;
+}
+
+.Toppart{
+    display:flex;
+    justify-content: space-between;
+    font-size:1.4rem;
+}
+.Copyright{
+    font-size:2rem;
+    margin-top:10px;
+    margin-bottom:0;
+}
+.labels{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}

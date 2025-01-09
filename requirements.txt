@@ -1,0 +1,12 @@
+django
+django-cors-headers
+djangorestframework
+markdown
+django-filter
+djangorestframework-simplejwt
+PyJWT
+pytz
+sqlparse
+psycopg2
+python-dotenv
+pillow

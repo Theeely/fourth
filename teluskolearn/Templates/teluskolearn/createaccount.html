@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css"  href="{% static 'css/createaccount.css'%} ">
+{% endblock style%}
+
+
+{% block content %}
+
+
+<div class="LoginContainer">
+    <form action="{% url 'createaccount'%}" method="POST" class="LoginForm">
+        {% csrf_token %}
+        <label>
+            enter email address:
+            <input type="email" placeholder="johndoe@gmail.com" name="email" required >
+        </label><br>
+        <label>
+            Enter firstname:
+            <input type="text" name="firstname" required>
+        </label><br>
+        <label>
+            Enter lastname:
+            <input type="text" name="lastname" required>
+        </label><br>
+        <label>
+            enter password:
+            <input type="password"  name="password1" required>
+        </label><br>
+        <label>
+            Re enter passoword:
+            <input type="password"  name="password2" required>
+        </label><br>
+        {% for message in messages %}
+        <span style="color:red;" >{{message}}</span><br>
+        {% endfor %}
+        <button id="submitbtn" type="summit">Create Acount</button>
+    </form>
+    <span id="createAccountquiz">Already have an account?<a href="{% url 'login' %}">login here</a></span>
+    <span><a href="{% url 'teluskohomepage' %}">See products without creating account</a></span>
+</div>
+
+{% endblock content %}
+
+
+

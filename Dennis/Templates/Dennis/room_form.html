@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div>
+      <h1>Enter the room details</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="summit" value="submit" >Save</button>
+
+    </form>
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,61 @@
+
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %}
+<title>{{room.name}}</title>
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/dennisroom.css'  %}">
+{% endblock style %}
+
+{% block content %}
+<div id="full-room-container">
+    <div id="room-topic-content-container">
+        <h3><a href="{% url 'home' %}">Go Back Home</a></h3>
+        <h1 id='room-name'>{{room.name}}</h1>
+        <span id="room-host">hosted by @{{room.host}}</span>
+        <h6 id="room-topic">Topic:{{room.topic}}</h6>
+        <p id="room-description">{{room.desc}}</p>
+    
+        <span>modified on {{room.date_modified}}</span><br>
+        <span>Created on {{room.date_created}}</span><br>
+    </div>
+    <div id="main-messages-box">
+        <h4>Messages</h4>
+        <span>{{message_count}} message(s)</span>
+        {% for message in messages %}
+        <hr>
+        <div class="message-box">
+            <span class="message-creator">@{{message.user}}</span><br>
+            <p class="message-body">{{message.body}}</p>
+            <span>
+                <span class="message-date-stamp">{{message.date_modified|timesince}} ago</span>
+                {% if request.user == message.user %}<a href="{% url 'deletemessage' message.id %}">delete</a>{% endif %}
+            </span>
+        </div>
+        <hr>
+        {% endfor %}
+        {% if user.is_authenticated %}
+            <div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="comment as {{user.username}}" name="comment" required>
+                    <button type="submit" >submit</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    <div id="main-participants-container">
+        <span id="participant-title">Participants</span>
+        <div id="listed-participants">
+            {% for participant in participants %}
+            <small class="listed-participant">{{participant.username}}</small>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+

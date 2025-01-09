@@ -1,0 +1,67 @@
+@font-face {
+    font-family: digiib ;
+    src: url('pyfonts/DS-DIGIB.TTF');
+}
+
+#full-room-container{
+    display: grid;
+    grid-template-columns: 5fr 2fr 2fr;
+    gap: 20px;
+}
+
+#room-topic-content-container{
+    padding-left: 20px;
+    border: 2px solid rgba(128, 128, 128, 0.411);
+    border-radius: 10px;
+}
+
+#room-topic{
+    font-size: 1.5rem;
+}
+
+#room-name{
+color: rgba(16, 16, 202, 0.733);
+font-style: italic;
+}
+.message-date-stamp{
+    font-family: tomkin;
+}
+#main-messages-box{
+    border: 1px solid rgba(128, 128, 128, 0.288);
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+#main-participants-container{
+    border: 1px solid rgba(128, 128, 128, 0.562);
+    border-radius: 10px;
+    display: flex;
+    flex-direction:column ;
+    padding-top: 20px;
+    padding-left: 5px;
+
+    
+}
+
+#listed-participants{
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+#listed-participants li{
+    list-style: none;
+}
+
+#participant-title{
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif,sans-serif;
+    font-weight: bold;
+    font-style: oblique;
+}
+.listed-participant{
+    font-size: 1.5rem;
+}

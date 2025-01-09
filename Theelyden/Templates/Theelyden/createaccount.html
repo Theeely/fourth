@@ -1,0 +1,44 @@
+
+
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %}
+create account
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css"  href=" {% static 'css/createaccount.css' %} ">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div>
+    <form action="">
+        <label>
+            enter username:
+            <input type="email" placeholder="username@gmail.com" name="username">
+        </label>
+        <label>
+            enter phone number:
+            <input type="phone" name="username">
+        </label>
+        <label>
+            enter password:
+            <input type="password"  name="password">
+        </label>
+        <label>
+            Re enter passoword:
+            <input type="password"  name="password">
+        </label>
+        <button type="summit">Create Acount</button>
+    </form>
+    <span>already have an account?<a href="">login here</a></span>
+</div>
+
+{% endblock content %}
+
+
+

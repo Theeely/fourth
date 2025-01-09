@@ -1,0 +1,33 @@
+
+
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %}
+log in to your account
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css"  href=" {% static 'css/createaccount.css' %} ">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div>
+    <form action="verify/" method="post">
+        {% csrf_token %}
+        <label>
+            enter username:
+            <input type="email" placeholder="username@gmail.com" name="username" required>
+        </label>
+        <label>
+            enter password:
+            <input type="password"  name="password" required>
+        </label>
+        <button type="summit">Login</button>
+    </form>
+    <span>Don't have an account?<a href="{% url 'creatingaccount' %}">create here</a></span>
+</div>
+{% endblock content %}

@@ -1,0 +1,87 @@
+{% extends "main.html" %}
+{% load static %}
+{% block title %}
+<title>Homepage</title>
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href= '{% static "css/dennishome.css" %}'>
+{% endblock style %}
+
+
+
+
+{% block content %}
+{% for message in messages %}
+<span>{{message}}</span>
+{% endfor %}
+<div id="main-rooms-container">
+    <div id="main-browse-topic-container" class="main-rooms-container-children">
+        <div class="container-header-elements">Browser Topics</div>
+        <div id="topics-on-browse">
+            <div class="topic-on-browse"><span ><a href="{% url 'home' %}">ALL</a></span></div>
+            {% for topic in topics %}
+                <div class="topic-on-browse"><span ><a href="{% url 'home' %}?q={{topic.name}} ">{{topic.name}}</a></span></div>
+            {% endfor %}
+            
+        </div>
+
+    </div>
+
+    <div id="sub-rooms-container" class="main-rooms-container-children">
+        <div id="rooms-header" class="container-header-elements">
+            <div id="room-header-one" >
+                <div id="study-room-create-room"><span>STUDY ROOMS</span>
+                    <span><a href="{%  url 'createroom' %}"> + Create Room</a></span>
+                </div>
+                <form action="{% url 'home' %}?q={{q}}">
+                    <div>
+                        <input type="text" placeholder="search for topic(s)" name="q"><button type="submit" value="q">Search</button>
+                    </div>
+                </form>
+                <p>{{rooms_count}} room(s) available</p>
+            </div>
+            
+        </div>
+        {% for room  in rooms %} 
+        <div class="room-container">
+            <span>@{{room.host}}</span><br>
+            <span class="rooms"><a href="  {{room.id}}"class="room-name">{{room.name}}</a></span><br>
+            <p class="room-desc">{{room.shortendesc}}</p>
+            <span class="room-topic">{{room.topic}}</span><br>
+            <div class="room-topic-delete-edit">
+                <span class="dates">Created on {{room.date_created}}</span>
+                <span class="dates">Modified on {{room.date_modified}}</span>
+                {% if request.user.is_authenticated %}
+                    {% if request.user == room.host %}
+                        <a href="{%  url 'deleteroom' room.id  %}" class="modifyroom" >Delete Room</a>
+                        <a href="{%  url 'updateroom' room.id  %}"  class="modifyroom" > Edit Room</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <hr>
+        </div>
+        {% endfor %}
+    
+    </div>
+    <div id="main-recent-activity-container" class="main-rooms-container-children">
+        <div id="recent-activity-header" class="container-header-elements">RECENT ACTIVITY</div>
+        {% for message in all_messages %}
+            <div class="recent-activity-box">
+                <span class="rec-act-username">@{{message.user}}</span> replied to 
+                <span class="rec-act-mes-room">{{message.room}}</span><br>
+                <p>{{message.Shortenmessage}}</p><br>
+                <small>{{message.date_created|timesince}}</small>
+                {% if request.user.is_authenticated %}
+                    {% if request.user == message.user %}
+                        <a href="{% url 'deletemessage' message.id %}"  >Delete</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock content %}
+

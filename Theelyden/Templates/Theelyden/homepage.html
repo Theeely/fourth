@@ -1,0 +1,28 @@
+
+
+{% extends "main.html" %}
+{%load static %}
+
+
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css"  href=" {% static 'css/homepage.css' %} ">
+{% endblock %}
+
+
+{% block content %}
+
+<div id="maindiv">
+    <h1>Welcome to smart money agencies</h1>
+    <span><h3>We make mone together,we grow together</h3></span>
+    <div id="querrydiv">
+        <span>New to the site?<a href="{% url 'creatingaccount' %}">create account</a></span>
+        <span>Returning customer?<a href="{% url 'login' %}">Login</a></span>
+    </div>
+</div>
+
+{% endblock %}
